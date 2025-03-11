@@ -1,9 +1,23 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { BsSun, BsMoon } from "react-icons/bs";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [darkMode, setDarkMode] = useState(
+    localStorage.getItem("theme") === "dark"
+  );
+
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+    }
+  }, [darkMode]);
 
   return (
     <nav className="bg-gray-900 text-white p-4 shadow-lg">
@@ -24,13 +38,22 @@ const Navbar = () => {
           <Link to="/upload" className="hover:text-gray-400 transition">
             Upload
           </Link>
-        </div>
-
-        {/* Profile Link on the right */}
-        <div className="hidden md:flex">
           <Link to="/profile" className="hover:text-gray-400 transition">
             Profile
           </Link>
+        </div>
+
+        {/* Profile & Dark Mode Toggle on the Right */}
+        <div className="hidden md:flex items-center space-x-4">
+          <Link to="/profile" className="hover:text-gray-400 transition">
+            Profile
+          </Link>
+          <button
+            onClick={() => setDarkMode(!darkMode)}
+            className="p-2 rounded-full bg-gray-700 hover:bg-gray-600 transition"
+          >
+            {darkMode ? <BsSun size={20} /> : <BsMoon size={20} />}
+          </button>
         </div>
 
         {/* Mobile Menu Button */}
@@ -62,6 +85,12 @@ const Navbar = () => {
           <Link to="/profile" className="hover:text-gray-400" onClick={() => setIsOpen(false)}>
             Profile
           </Link>
+          <button
+            onClick={() => setDarkMode(!darkMode)}
+            className="p-2 rounded-full bg-gray-700 hover:bg-gray-600 transition"
+          >
+            {darkMode ? <BsSun size={20} /> : <BsMoon size={20} />}
+          </button>
         </motion.div>
       )}
     </nav>
