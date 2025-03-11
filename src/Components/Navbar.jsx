@@ -8,21 +8,13 @@ const Navbar = () => {
   return (
     <nav className="bg-gray-900 text-white p-4 shadow-lg">
       <div className="container mx-auto flex justify-between items-center">
-        {/* Logo */}
+        {/* Logo on the left */}
         <Link to="/" className="text-2xl font-bold tracking-wide">
           MemeVerse
         </Link>
 
-        {/* Mobile Menu Button */}
-        <button
-          className="md:hidden focus:outline-none"
-          onClick={() => setIsOpen(!isOpen)}
-        >
-          ☰
-        </button>
-
-        {/* Nav Links */}
-        <div className="hidden md:flex space-x-6">
+        {/* Nav Links Centered */}
+        <div className="hidden md:flex space-x-6 mx-auto">
           <Link to="/" className="hover:text-gray-400 transition">
             Home
           </Link>
@@ -32,10 +24,22 @@ const Navbar = () => {
           <Link to="/upload" className="hover:text-gray-400 transition">
             Upload
           </Link>
+        </div>
+
+        {/* Profile Link on the right */}
+        <div className="hidden md:flex">
           <Link to="/profile" className="hover:text-gray-400 transition">
             Profile
           </Link>
         </div>
+
+        {/* Mobile Menu Button */}
+        <button
+          className="md:hidden focus:outline-none"
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          ☰
+        </button>
       </div>
 
       {/* Mobile Menu */}
