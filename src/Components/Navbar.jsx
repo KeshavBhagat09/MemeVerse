@@ -29,7 +29,7 @@ const Navbar = () => {
 
         {/* Nav Links Centered */}
         <div className="hidden md:flex space-x-6 mx-auto">
-          <Link to="/" className="hover:text-gray-400 transition">
+          <Link to="/home" className="hover:text-gray-400 transition">
             Home
           </Link>
           <Link to="/explore" className="hover:text-gray-400 transition">
@@ -43,11 +43,8 @@ const Navbar = () => {
           </Link>
         </div>
 
-        {/* Profile & Dark Mode Toggle on the Right */}
+        {/* Dark Mode Toggle on the Right */}
         <div className="hidden md:flex items-center space-x-4">
-          <Link to="/profile" className="hover:text-gray-400 transition">
-            Profile
-          </Link>
           <button
             onClick={() => setDarkMode(!darkMode)}
             className="p-2 rounded-full bg-gray-700 hover:bg-gray-600 transition"
@@ -73,7 +70,7 @@ const Navbar = () => {
           exit={{ opacity: 0, y: -20 }}
           className="md:hidden flex flex-col bg-gray-800 p-4 mt-2 space-y-4"
         >
-          <Link to="/" className="hover:text-gray-400" onClick={() => setIsOpen(false)}>
+          <Link to="/home" className="hover:text-gray-400" onClick={() => setIsOpen(false)}>
             Home
           </Link>
           <Link to="/explore" className="hover:text-gray-400" onClick={() => setIsOpen(false)}>
